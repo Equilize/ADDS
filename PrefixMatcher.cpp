@@ -1,21 +1,21 @@
 #include "PrefixMatcher.h"
 using namespace std;
 
-TrieNode::TrieNode() : routerNumber(-1), isEndOfAddress(false) {
+PrefixTrieNode::PrefixTrieNode() : routerNumber(-1), isEndOfAddress(false) {
     for (int i = 0; i < ALPHABET_SIZE; ++i)
         children[i] = nullptr;
 }
 
 PrefixMatcher::PrefixMatcher() {
-    root = new TrieNode();
+    root = new PrefixTrieNode();
 }
 
 void PrefixMatcher::insert(string address, int routerNumber) {
-    TrieNode* curr = root;
+    PrefixTrieNode* curr = root;
     for (char c : address) {
         int index = c - '0'; 
         if (curr -> children[index] == nullptr)
-            curr -> children[index] = new TrieNode();
+            curr -> children[index] = new PrefixTrieNode();
         curr = curr -> children[index];
     }
     curr -> isEndOfAddress = true;
@@ -23,7 +23,7 @@ void PrefixMatcher::insert(string address, int routerNumber) {
 }
 
 int PrefixMatcher::selectRouter(string networkAddress) {
-    TrieNode* curr = root;
+    PrefixTrieNode* curr = root;
     int longestPrefix = 0;
     int selectedRouter = -1;
 

@@ -4,18 +4,18 @@
 
 const int ALPHABET_SIZE = 2; 
 
-class TrieNode {
+class PrefixTrieNode {
 public:
-    TrieNode* children[ALPHABET_SIZE];
+    PrefixTrieNode* children[ALPHABET_SIZE];
     int routerNumber;
     bool isEndOfAddress;
 
-    TrieNode();
+    PrefixTrieNode();
 };
 
 class PrefixMatcher {
 private:
-    TrieNode* root;
+    PrefixTrieNode* root;
 
 public:
     PrefixMatcher();

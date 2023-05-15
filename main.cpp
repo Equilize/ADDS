@@ -5,4 +5,6 @@
 int main() {
     PrefixMatcher PrefixMatcher;
     Autocomplete ac;
+
+    return 0;
 }

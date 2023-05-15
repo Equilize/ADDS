@@ -1,20 +1,20 @@
 #include "Autocomplete.h"
 using namespace std;
 
-TrieNode::TrieNode() : children(26, nullptr), isEndOfWord(false) {}
+AutoTrieNode::AutoTrieNode() : children(26, nullptr), isEndOfWord(false) {}
 
 Autocomplete::Autocomplete() {
-    root = new TrieNode();
+    root = new AutoTrieNode();
 }
 
 void Autocomplete::insert(string word) {
-    TrieNode* curr = root;
+    AutoTrieNode* curr = root;
 
     for (char c : word) {
         int index = c - 'a';
 
         if (curr -> children[index] == nullptr) {
-            curr -> children[index] = new TrieNode();
+            curr -> children[index] = new AutoTrieNode();
         }
 
         curr = curr -> children[index];
@@ -23,7 +23,7 @@ void Autocomplete::insert(string word) {
     curr -> isEndOfWord = true;
 }
 
-void Autocomplete::getAllSuggestions(TrieNode* node, string prefix, vector<string>& suggestions) {
+void Autocomplete::getAllSuggestions(AutoTrieNode* node, string prefix, vector<string>& suggestions) {
     if (node == nullptr) {
         return;
     }
@@ -42,7 +42,7 @@ void Autocomplete::getAllSuggestions(TrieNode* node, string prefix, vector<strin
 
 vector<string> Autocomplete::getSuggestions(string partialWord) {
     vector<string> suggestions;
-    TrieNode* curr = root;
+    AutoTrieNode* curr = root;
 
     for (char c : partialWord) {
         int index = c - 'a';

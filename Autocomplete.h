@@ -4,22 +4,22 @@
 #include <string>
 using namespace std;
 
-class TrieNode {
+class AutoTrieNode {
 public:
-    vector<TrieNode*> children;
+    vector<AutoTrieNode*> children;
     bool isEndOfWord;
 
-    TrieNode();
+    AutoTrieNode();
 };
 
 class Autocomplete {
 private:
-    TrieNode* root;
+    AutoTrieNode* root;
 
 public:
     Autocomplete();
     void insert(string word);
-    void getAllSuggestions(TrieNode* node, string prefix, vector<string>& suggestions);
+    void getAllSuggestions(AutoTrieNode* node, string prefix, vector<string>& suggestions);
     vector<string> getSuggestions(string partialWord);
 };
 
