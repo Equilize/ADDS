@@ -59,7 +59,7 @@ template <typename T>
 void Heap<T>::insert(T value) {
   values.push_back(value);
 
-  int child_index = values.size -1;
+  int child_index = values.size() -1;
   int parent_index = floor((child_index -1)/2);
 
   while(values[child_index] < values[parent_index] && child_index > 0) {
